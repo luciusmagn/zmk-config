@@ -1,0 +1,140 @@
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        /* ─────────── Layer 0 – Base ─────────── */
+        layer_0 {
+            bindings = <
+  &kp TAB   &kp B       &kp Z       &kp O       &kp U        &lsft &kp BSLASH
+  &kp LCTRL &kp C       &kp I       &kp E       &kp A        &kp COMMA
+  &kp LSHIFT&kp G       &kp X       &kp J       &kp K        &kp SLASH
+        XXX       XXX         XXX   &kp LGUI    &mo 1         &kp SPACE
+
+  &kp Y     &kp V       &kp W       &kp D       &kp P        &lsft &kp SCOLON
+  &kp L     &kp N       &kp S       &kp T       &kp H        &kp DOT
+  &kp ESC   &kp Q       &kp F       &kp M       &kp R        &lsft &kp COMMA
+        XXX       XXX         XXX   &mo 4       &mo 2         &kp ENTER
+            >;
+        };
+
+        /* ─────────── Layer 1 – Numbers / Nav ─────────── */
+        layer_1 {
+            bindings = <
+  &kp TAB     &lsft &kp 1  &lsft &kp 2  &lsft &kp 3  &lsft &kp 4  &lsft &kp 5
+  &kp LCTRL   XXX          &kp INS       &kp HOME     &kp PG_UP    &alt &kp DOT
+  &kp LSHIFT  XXX          &kp DEL       &kp END      &kp PG_DN    &kp NONUS_BSLASH
+          XXX        XXX         XXX     &kp LGUI     &trans       &kp SPACE
+
+  &kp BSPC    &lsft &kp 0  &lsft &kp 9  &lsft &kp 8  &lsft &kp 7   &lsft &kp 6
+  XXX         &kp RIGHT    &kp UP       &kp DOWN     &kp LEFT      &alt &kp COMMA
+  XXX         XXX          XXX          XXX          XXX           &lsft &kp LBRACKET
+          XXX        XXX         XXX     &kp RALT     &trans       &kp ENTER
+            >;
+        };
+
+        /* ─────────── Layer 2 – Mouse ─────────── */
+        layer_2 {
+            bindings = <
+  &kp TAB     &alt &kp A  &alt &kp V  &alt &kp X  &alt &kp SCOLON  &lsft &kp MINUS
+  &kp LCTRL   &mkws L     &mkws D     &mkws U     &mkws R          &alt &kp B
+  &kp LSHIFT  &mkp L      &mkp D      &mkp U      &mkp R           &alt &kp F
+        XXX        XXX         XXX     &kp BTN1     &kp BTN2       &kp BTN4
+
+  &kp BSPC    XXX          XXX          &alt &kp SLASH &alt &kp C  &alt &kp 6
+  XXX         XXX          XXX          &alt &kp 7    &alt &kp GRAVE &alt &kp N
+  XXX         XXX          &kp SLASH    &kp MINUS     &kp 1         &alt &kp G
+        XXX        XXX         XXX     &kp LALT      &trans         &kp BTN5
+            >;
+        };
+
+        /* ─────────── Layer 3 – FN / Macros ─────────── */
+        layer_3 {
+            bindings = <
+  &macro M0  XXX         &macro M1 &macro M2 &macro M3 &macro M4
+  XXX        &kp F1      &kp F2    &kp F3    &kp F4    &kp PSCRN
+  &kp CAPS   &kp F5      &kp F6    &kp F7    &kp F8    XXX
+        XXX        XXX         XXX  &kp LGUI  &trans     &kp SPACE
+
+  &kp F10    &kp F9      &kp 3     &kp 2     &kp 1     &kp SLASH
+  &kp F12    &kp F11     &kp 6     &kp 5     &kp 4     &kp MINUS
+  &reset     XXX         &kp 0     &kp 9     &kp 8     XXX
+        XXX        XXX         XXX  &kp RALT  &trans     &kp ENTER
+            >;
+        };
+
+        /* ─────────── Layer 4 – CZ/FI accents ─────────── */
+        layer_4 {
+            bindings = <
+  &kp TAB   &kp B     &kp 7   &macro M15 &kp LBRACKET &macro M11
+  &kp LCTRL &kp 4     &kp 9   &kp 2      &kp 8        &kp SCOLON
+  &kp LSHIFT&kp G     &kp X   &kp J      &kp K        XXX
+        XXX       XXX       XXX   &kp LGUI  &trans      &kp SPACE
+
+  &kp Y     &kp V     &kp W   &macro M14 &kp P        &macro M10
+  &kp L     &macro M12&kp 3   &macro M13 &kp 0        &kp 6
+  &kp ESC   &kp Q     &kp F   &kp M      &kp 5        XXX
+        XXX       XXX       XXX   &trans    &trans      &kp ENTER
+            >;
+        };
+    };
+
+    /* ─────────── Behaviour blocks ─────────── */
+
+    macros {
+        compatible = "zmk,behavior-macro";
+
+        m0:  macro_m0  { bindings = <
+            &text "root\n" &delay-ms 300
+            &text "ehz7hiug\n" &delay-ms 300
+            &text "wlinit\n"
+        >; };
+
+        /* empty placeholders m1-m4 so the numbers align */
+        m1:  macro_m1  { bindings = < >; };
+        m2:  macro_m2  { bindings = < >; };
+        m3:  macro_m3  { bindings = < >; };
+        m4:  macro_m4  { bindings = < >; };
+
+        /* Czech / Finnish helpers */
+        m10: macro_m10 { bindings = <&tap &kp BSLASH &kp O>; };
+        m11: macro_m11 { bindings = <&tap &kp BSLASH &kp A>; };
+        m12: macro_m12 { bindings = <&tap &lsft &kp EQUAL &kp N>; };
+        m13: macro_m13 { bindings = <&tap &lsft &kp EQUAL &kp T>; };
+        m14: macro_m14 { bindings = <&tap &lsft &kp EQUAL &kp D>; };
+        m15: macro_m15 { bindings = <&tap &kp EQUAL  &kp O>; };
+    };
+
+    key_overrides {
+        grave_on_shift: ov_0 {
+            compatible     = "zmk,key-override";
+            base-key       = <&kp COMMA>;
+            mods-required  = <MOD_LSFT>;
+            override-key   = <&kp GRAVE>;
+            layers         = <1>;
+        };
+
+        quote_on_shift: ov_1 {
+            compatible    = "zmk,key-override";
+            base-key      = <&lsft &kp COMMA>;
+            mods-required = <MOD_LSFT>;
+            override-key  = <&lsft &kp QUOTE>;
+            layers        = <1>;
+        };
+
+        rbracket_on_shift_bslash: ov_2 {
+            compatible    = "zmk,key-override";
+            base-key      = <&lsft &kp BSLASH>;
+            override-key  = <&kp RBRACKET>;
+            mods-required = <MOD_LSFT>;
+            layers        = <1>;
+        };
+
+        rbracket_on_shift_scolon: ov_3 {
+            compatible    = "zmk,key-override";
+            base-key      = <&lsft &kp SCOLON>;
+            override-key  = <&kp RBRACKET>;
+            mods-required = <MOD_LSFT>;
+            layers        = <1>;
+        };
+    };
+};
