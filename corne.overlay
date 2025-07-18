@@ -1,0 +1,17 @@
+/ {
+    aliases {
+        split-uart = &uart0;
+    };
+};
+
+&uart0 {
+    current-speed = <115200>;
+    status = "okay";
+    pinctrl-0 = <&uart0_default>;
+    pinctrl-names = "default";
+};
+
+&uart0_default {
+    tx-pin = <6>;   /* P0.06 -> TRRS Ring2 */
+    rx-pin = <8>;   /* P0.08 -> TRRS Sleeve */
+};
