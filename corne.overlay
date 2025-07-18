@@ -1,17 +1,25 @@
 / {
+    /* ❶  Phandle to the UART we will use (Pro-Micro pins P0.06 / P0.08) */
     aliases {
         split-uart = &uart0;
+    };
+
+    /* ❷  NEW: declare the wired-split device itself */
+    wired_split: wired-split {
+        compatible = "zmk,wired-split-uart";
+        status = "okay";
+        uart = <&uart0>;          /* tells ZMK which UART to use        */
     };
 };
 
 &uart0 {
     current-speed = <115200>;
-    status = "okay";
-    pinctrl-0 = <&uart0_default>;
+    status        = "okay";
+    pinctrl-0     = <&uart0_default>;
     pinctrl-names = "default";
 };
 
 &uart0_default {
-    tx-pin = <6>;   /* P0.06 -> TRRS Ring2 */
-    rx-pin = <8>;   /* P0.08 -> TRRS Sleeve */
+    tx-pin = <6>;   /* P0.06 → TRRS Ring2 */
+    rx-pin = <8>;   /* P0.08 → TRRS Sleeve */
 };
