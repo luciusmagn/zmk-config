@@ -1,0 +1,25 @@
+/ {
+    /* UART alias that most examples expect */
+    aliases {
+        split-uart = &uart0;
+    };
+
+    /* ─── This node makes DT_HAS_ZMK_WIRED_SPLIT_ENABLED evaluate to y ─── */
+    wired_split: wired-split {
+        compatible = "zmk,wired-split-uart";
+        status = "okay";
+        uart = <&uart0>;
+    };
+};
+
+&uart0 {
+    current-speed = <115200>;
+    status        = "okay";
+    pinctrl-0     = <&uart0_default>;
+    pinctrl-names = "default";
+};
+
+&uart0_default {
+    tx-pin = <6>;   /* P0.06  ➜ TRRS Ring2 */
+    rx-pin = <8>;   /* P0.08  ➜ TRRS Sleeve */
+};
